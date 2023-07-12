@@ -36,12 +36,11 @@
                                 </thead>
                                 <tbody>
                                 @php
-                                $no = 0;
-                                $no++;
+                                $no = 1;
                                 @endphp
                                 @foreach ($peminjaman as $item)
                                 <tr>
-                                    <td>{{$no}}</td>
+                                    <td>{{$no++}}</td>
                                     <td>{{$item->nama}}</td>
                                     <td>{{$item->judul_buku}}</td>
                                     <td>{{$item->tgl_pinjam}}</td>
