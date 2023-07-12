@@ -9,6 +9,30 @@ use Illuminate\Support\Facades\DB;
 class PeminjamanController extends Controller
 {
     public function index(){
+        // collection methods example
+
+        // contains & filter
+        // $nilai = [2,2,3,5,7,8,8,9,10];
+        // $aaa = collect($nlai)->contains(function($value){
+        //    return $value < 7;
+        // });
+        // $bbb = collect($nilai)->filter(function($value){
+        //    return $value < 7;
+        // })->all();
+
+        // pluck
+        // $biodata = [
+        //    ['nama' => 'Daffa', 'umur' => 17],
+        //    ['nama' => 'Quirrel', 'umur' => 15],
+        //    ['nama' => 'Vergil', 'umur' => 20],
+        // ];
+
+        // map
+        // $number = collect([1,2,3,4,5]);
+        // $multiplied = $number->map(function($item,$key){
+        //    return $item * 2;
+        // })
+
         // query builder
         // $peminjaman = DB::table('peminjaman')->get();
 
