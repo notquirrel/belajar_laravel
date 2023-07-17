@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peminjaman;
+use App\Models\Buku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -37,13 +38,14 @@ class PeminjamanController extends Controller
         // $peminjaman = DB::table('peminjaman')->get();
 
         // eloquent
-        $peminjaman = Peminjaman::all();
-        return view('admin.peminjaman',compact('peminjaman'));
+        $peminjaman = Peminjaman::with('buku')->get();
+        $buku = Buku::orderBy('id', 'asc')->get();
+        return view('admin.peminjaman',compact('peminjaman', 'buku'));
     }
     public function store(Request $request){
         $request->validate([
             'nama'         => 'required',
-            'judul_buku'   => 'required',
+            'id_buku'      => 'required',
             'tgl_pinjam'   => 'required',
             'tgl_kembali'  => 'required',
         ]);
@@ -51,7 +53,7 @@ class PeminjamanController extends Controller
         // query builder
         // DB::table('peminjaman')->insert([
         //     'nama'         => $request->nama,
-        //     'judul_buku'   => $request->judul_buku,
+        //     'id_buku'      => $request->id_buku,
         //     'tgl_pinjam'   => $request->tgl_pinjam,
         //     'tgl_kembali'  => $request->tgl_kembali,
         // ]);
@@ -59,7 +61,7 @@ class PeminjamanController extends Controller
         // eloquent
         Peminjaman::create([
             'nama'         => $request->nama,
-            'judul_buku'   => $request->judul_buku,
+            'id_buku'      => $request->id_buku,
             'tgl_pinjam'   => $request->tgl_pinjam,
             'tgl_kembali'  => $request->tgl_kembali,
         ]);
@@ -68,7 +70,7 @@ class PeminjamanController extends Controller
     public function update(Request $request){
         $request->validate([
             'nama'         => 'required',
-            'judul_buku'   => 'required',
+            'id_buku'      => 'required',
             'tgl_pinjam'   => 'required',
             'tgl_kembali'  => 'required',
         ]);
@@ -76,7 +78,7 @@ class PeminjamanController extends Controller
         // query builder
         // $atlet = DB::table('peminjaman')->where('id',$request->id)->update([
         //     'nama'         => $request->nama,
-        //     'judul_buku'   => $request->judul_buku,
+        //     'id_buku'      => $request->id_buku,
         //     'tgl_pinjam'   => $request->tgl_pinjam,
         //     'tgl_kembali'  => $request->tgl_kembali,
         // ]);
@@ -84,7 +86,7 @@ class PeminjamanController extends Controller
         // eloquent
         $atlet = Peminjaman::where('id',$request->id)->update([
             'nama'         => $request->nama,
-            'judul_buku'   => $request->judul_buku,
+            'id_buku'      => $request->id_buku,
             'tgl_pinjam'   => $request->tgl_pinjam,
             'tgl_kembali'  => $request->tgl_kembali,
         ]);

@@ -35,14 +35,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @php
-                                $no = 1;
-                                @endphp
                                 @foreach ($peminjaman as $item)
                                 <tr>
-                                    <td>{{$no++}}</td>
+                                    <td>{{$loop->iteration}}</td>
                                     <td>{{$item->nama}}</td>
-                                    <td>{{$item->judul_buku}}</td>
+                                    <td>{{$item->buku['judul_buku']}}</td>
                                     <td>{{$item->tgl_pinjam}}</td>
                                     <td>{{$item->tgl_kembali}}</td>
                                     <td class="text-center">
@@ -80,7 +77,13 @@
                 </div>
                 <label>Judul Buku</label>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="judul_buku" placeholder="Masukkan judul buku">
+                    <select class="form-control" name="id_buku">
+                        @foreach($buku as $row)
+                        <option value="<?= $row->id ?>">
+                            <?= $row->judul_buku ?>
+                        </option>
+                        @endforeach
+                </select>
                 </div>
                 <label>Tanggal Pinjam</label>
                 <div class="form-group">
@@ -120,7 +123,18 @@
                 </div>
                 <label>Judul Buku</label>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="judul_buku" value="{{$item->judul_buku}}" placeholder="Masukkan judul buku">
+                    <select class="form-control" name="id_buku">
+                        @foreach($buku as $row)
+                        @if ($row->id == $item->id_buku)
+                            {{$ses = "selected"}}
+                        @else
+                            {{$ses = ""}}
+                        @endif
+                        <option value="<?= $row->id ?>" <?= $ses ?>>
+                            <?= $row->judul_buku ?>
+                        </option>
+                        @endforeach
+                </select>
                 </div>
                 <label>Tanggal Pinjam</label>
                 <div class="form-group">

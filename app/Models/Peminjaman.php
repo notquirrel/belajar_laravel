@@ -11,8 +11,13 @@ class Peminjaman extends Model
     protected $table = 'peminjaman';
     protected $fillable = [
         'nama',
-        'judul_buku',
+        'id_buku',
         'tgl_pinjam',
         'tgl_kembali',
     ];
+
+    public function buku()
+    {
+        return $this->belongsTo(Buku::class, 'id_buku', 'id');
+    }
 }
