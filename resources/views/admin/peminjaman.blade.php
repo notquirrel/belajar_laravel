@@ -47,8 +47,8 @@
                                         <a href="{{asset('admin/delete-peminjaman/'.$item->id)}}" type="button" class="btn btn-danger" onclick="return confirm('Yakin akan menghapus data ini?')"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
-                                </tbody>
                                 @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>
