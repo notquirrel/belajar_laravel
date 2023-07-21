@@ -88,17 +88,8 @@
                             <div class="drop-down dropdown-profile   dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        <li>
-                                            <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="email-inbox.html"><i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill badge-primary">3</div></a>
-                                        </li>
-
+                                        <li><a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a></li>
                                         <hr class="my-2">
-                                        <li>
-                                            <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                        </li>
                                         <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
@@ -118,14 +109,13 @@
         <div class="nk-sidebar">
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label">Dashboard</li>
+                    <li class="nav-label">Menu</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Beranda</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="/home">Home</a></li>
-                            <!-- <li><a href="./index-2.html">Home 2</a></li> -->
                         </ul>
                     </li>
                     <li class="mega-menu mega-menu-sm">
