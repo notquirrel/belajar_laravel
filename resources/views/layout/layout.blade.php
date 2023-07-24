@@ -88,9 +88,9 @@
                             <div class="drop-down dropdown-profile   dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        <li><a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a></li>
+                                        <li><a href="#"><i class="icon-user"></i> <span>Profile</span></a></li>
                                         <hr class="my-2">
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="{{ asset('/logout') }}"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Beranda</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="/home">Home</a></li>
+                            <li><a href="/admin/home">Home</a></li>
                         </ul>
                     </li>
                     <li class="mega-menu mega-menu-sm">

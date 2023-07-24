@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 
 class PeminjamanController extends Controller
 {
+    public function home(){
+        return view('admin.home');
+    }
     public function index(){
         // collection methods example
 
@@ -103,5 +106,11 @@ class PeminjamanController extends Controller
         if($del){
             return redirect('admin/peminjaman')->with('success', 'Peminjaman Berhasil Dihapus');
         }
+    }
+    public function logout(request $request)
+    {
+        $request->session()->flush();
+
+        return redirect()->to('/');
     }
 }

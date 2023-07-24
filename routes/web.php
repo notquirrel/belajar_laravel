@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PeminjamanController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PeminjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', [HomeController::class, 'home']);
-Route::get('admin/peminjaman', [PeminjamanController::class, 'index']);
-Route::post('admin/create-peminjaman', [PeminjamanController::class, 'store']);
-Route::post('admin/edit-peminjaman', [PeminjamanController::class, 'update']);
-Route::get('admin/delete-peminjaman/{id}', [PeminjamanController::class, 'delete']);
+Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function () {
+    Route::controller(PeminjamanController::class)->group(function () {
+        Route::get('admin/home', 'home');
+        Route::get('admin/peminjaman', 'index');
+        Route::post('admin/create-peminjaman', 'store');
+        Route::post('admin/edit-peminjaman', 'update');
+        Route::get('admin/delete-peminjaman/{id}', 'delete');
+        Route::get("/logout",  "logout");
+    });
+});
+
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/login', 'login')->middleware('guest');
+    Route::post('postLogin', "postLogin");
+});
