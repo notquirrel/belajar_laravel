@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BukuController;
 use App\Http\Controllers\PeminjamanController;
 
 /*
@@ -28,9 +29,15 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
         Route::get('admin/delete-peminjaman/{id}', 'delete');
         Route::get("/logout",  "logout");
     });
+    Route::controller(BukuController::class)->group(function () {
+        Route::get('admin/buku', 'index');
+        Route::post('admin/create-buku', 'store');
+        Route::post('admin/edit-buku', 'update');
+        Route::get('admin/delete-buku/{id}', 'delete');
+    });
 });
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'login')->middleware('guest');
-    Route::post('postLogin', "postLogin");
+    Route::post('postLogin', "postLogin")->middleware('throttle:login');
 });

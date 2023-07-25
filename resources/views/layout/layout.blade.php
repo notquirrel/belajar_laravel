@@ -124,6 +124,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="/admin/peminjaman">Peminjaman</a></li>
+                            <li><a href="/admin/buku">Buku</a></li>
                         </ul>
                     </li>
                 </ul>
