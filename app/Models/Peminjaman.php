@@ -15,6 +15,7 @@ class Peminjaman extends Model
         'tgl_pinjam',
         'tgl_kembali',
     ];
+    public $timestamps = false;
 
     public function buku()
     {

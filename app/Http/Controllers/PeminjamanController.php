@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Peminjaman;
+use Carbon\Carbon;
 use App\Models\Buku;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
+use App\Exports\PeminjamanExport;
+use App\Imports\PeminjamanImport;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PeminjamanController extends Controller
 {
@@ -106,6 +110,15 @@ class PeminjamanController extends Controller
         if($del){
             return redirect('admin/peminjaman')->with('success', 'Peminjaman Berhasil Dihapus');
         }
+    }
+    public function export(){
+        // return Excel::download(new PeminjamanExport, 'peminjaman-'.Carbon::now()->timestamp.'.xlsx');
+        return (new PeminjamanExport)->download('peminjaman-'.Carbon::now()->timestamp.'.xlsx');
+    }
+    public function import(request $request){
+        Excel::import(new PeminjamanImport, $request->file('file'));
+
+        return redirect('admin/peminjaman')->with('success', 'Import Data Berhasil');
     }
     public function logout(request $request)
     {

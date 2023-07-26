@@ -21,7 +21,17 @@
                     <div class="card-body">
                         <h4 class="card-title">Data Peminjaman</h4>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreate"><i class="fa fa-plus"></i> Tambah Data</button>
+                        <div class="row">
+                            <div class="col-9">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreate"><i class="fa fa-plus"></i> Tambah Data</button>
+                            </div>
+                            <div class="col-1 ml-5 mr-4">
+                                <a href="export-peminjaman" class="btn btn-success float-right text-white"><i class="fa fa-upload"></i> Export</a>
+                            </div>
+                            <div class="col-1">
+                                <button type="button" class="btn btn-success float-right text-white" data-toggle="modal" data-target="#modalImport"><i class="fa fa-download"></i> Import</button>
+                            </div>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered zero-configuration">
                                 <thead>
@@ -154,6 +164,32 @@
     </div>
 </div>
 @endforeach
+
+<!-- Modal Import-->
+<div class="modal fade" id="modalImport">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Import Data</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                </button>
+            </div>
+            <form action="import-peminjaman" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="file" class="form-control" id="file" name="file">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>

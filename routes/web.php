@@ -27,6 +27,8 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
         Route::post('admin/create-peminjaman', 'store');
         Route::post('admin/edit-peminjaman', 'update');
         Route::get('admin/delete-peminjaman/{id}', 'delete');
+        Route::get('admin/export-peminjaman', 'export');
+        Route::post('admin/import-peminjaman', 'import');
         Route::get("/logout",  "logout");
     });
     Route::controller(BukuController::class)->group(function () {

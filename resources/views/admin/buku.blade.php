@@ -21,7 +21,14 @@
                     <div class="card-body">
                         <h4 class="card-title">Data Buku</h4>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreate"><i class="fa fa-plus"></i> Tambah Data</button>
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCreate"><i class="fa fa-plus"></i> Tambah Data</button>
+                            </div>
+                            {{-- <div class="col-6">
+                                <a href="export-buku" class="btn btn-success float-right text-white"><i class="fa fa-file-excel-o"></i> Export</a>
+                            </div> --}}
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered zero-configuration">
                                 <thead>
