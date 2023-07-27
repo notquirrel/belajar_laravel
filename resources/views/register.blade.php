@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Login</title>
+    <title>Register</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/template/assets/images/favicon.png">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
@@ -31,22 +31,24 @@
                     <div class="form-input-content">
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
-                                <h2 class="text-center">Login</h2>
-                                <form class="mt-5 mb-5 login-input" action="{{ asset('postLogin') }}" method="post">
+                                <h2 class="text-center">Register</h2>
+                                <form class="mt-5 mb-5 login-input" action="{{ asset('postRegister') }}" method="post">
                                     @if (Session::get('message'))
-                                    <p class="text-danger">{{ Session::get('message') }}</p>
+                                    <p class="text-success">{{ Session::get('message') }}</p>
                                     @endif
                                     @csrf
                                     <div class="form-group">
                                         <input type="text" name="name" class="form-control" placeholder="Username">
                                     </div>
                                     <div class="form-group">
+                                        <input type="email" name="email" class="form-control" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
                                         <input type="password" name="password" class="form-control" placeholder="Password">
                                     </div>
-                                    <p class="pb-2"><a href="/forgot">Lupa password?</a></p>
-                                    <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
+                                    <button type="submit" class="btn login-form__btn submit w-100">Sign Up</button>
                                 </form>
-                                <p class="mt-5 login-form__footer">Don't have account? <a href="/register" class="text-primary">Sign Up</a> now</p>
+                                <p class="mt-5 login-form__footer">Already have account? <a href="/login" class="text-primary">Sign In</a> here</p>
                             </div>
                         </div>
                     </div>

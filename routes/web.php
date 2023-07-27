@@ -39,7 +39,15 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
     });
 });
 
-Route::controller(AuthController::class)->group(function () {
-    Route::get('/login', 'login')->middleware('guest');
-    Route::post('postLogin', "postLogin")->middleware('throttle:login');
+Route::middleware('guest')->group(function () {
+    Route::controller(AuthController::class)->group(function () {
+        Route::get('/login', 'login')->name('login');
+        Route::post('postLogin', "postLogin")->middleware('throttle:login');
+        Route::get('/register', 'register');
+        Route::post('postRegister', 'postRegister');
+        Route::get('/forgot', 'forgot')->name('password.request');
+        Route::post('postForgot', 'postForgot')->name('password.email');
+        Route::get('/reset/{token}', 'reset')->name('password.reset');
+        Route::post('postReset', 'postReset')->name('password.update');
+    });
 });
