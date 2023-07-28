@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Buku;
+use App\Events\UserLogout;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use App\Exports\PeminjamanExport;
 use App\Imports\PeminjamanImport;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PeminjamanController extends Controller
@@ -122,6 +124,9 @@ class PeminjamanController extends Controller
     }
     public function logout(request $request)
     {
+        $user = Auth::user();
+        UserLogout::dispatch($user);
+
         $request->session()->flush();
 
         return redirect()->to('/');

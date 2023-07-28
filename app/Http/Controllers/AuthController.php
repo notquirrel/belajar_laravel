@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Users;
+use App\Events\UserLogin;
+use App\Models\ActivityLog;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +25,10 @@ class AuthController extends Controller
                 'name' => Auth::user()->name,
                 'password' => Auth::user()->password,
             ]);
+
+            $user = Auth::user();
+            UserLogin::dispatch($user);
+
             return redirect('admin/home');
         }
             return redirect()->back()->with('message', 'Username or Password is Wrong');
