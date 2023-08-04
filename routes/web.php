@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\PeminjamanController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,10 @@ Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function (
         Route::post('admin/create-buku', 'store');
         Route::post('admin/edit-buku', 'update');
         Route::get('admin/delete-buku/{id}', 'delete');
+    });
+    Route::controller(LogController::class)->group(function () {
+        Route::get('admin/log', 'index');
+        Route::get('admin/delete-log/{id}', 'delete');
     });
 });
 

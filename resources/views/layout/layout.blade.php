@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
 
     <!--*******************
         Preloader start
@@ -41,7 +42,7 @@
         ***********************************-->
         <div class="nav-header">
             <div class="brand-logo">
-                <a href="/home">
+                <a href="home">
                     <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
                     <span class="logo-compact"><img src="./images/logo-compact.png" alt=""></span>
                     <span class="brand-title text-white">
@@ -125,6 +126,7 @@
                         <ul aria-expanded="false">
                             <li><a href="/admin/peminjaman">Peminjaman</a></li>
                             <li><a href="/admin/buku">Buku</a></li>
+                            <li><a href="/admin/log">Activity Log</a></li>
                         </ul>
                     </li>
                 </ul>
